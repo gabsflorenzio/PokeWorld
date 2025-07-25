@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import custom font if available */
+/* @import url('https://fonts.googleapis.com/css2?family=Pokemon+Solid&display=swap'); */
+
+@layer base {
+  :root {
+    /* Default light theme variables (shadcn defaults) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 47.4% 11.2%;
+    --radius: 0.5rem;
+
+    /* Custom Pokedex specific variables - default to light theme values */
+    --pokedex-bg-gradient-start: var(--background);
+    --pokedex-bg-gradient-end: var(--background);
+    --pokedex-card-bg: var(--card);
+    --pokedex-card-border: var(--border);
+    --pokedex-text-primary: var(--foreground);
+    --pokedex-text-secondary: var(--muted-foreground);
+    --pokedex-accent: var(--primary);
+    --pokedex-accent-foreground: var(--primary-foreground);
+    --pokedex-neon-glow: transparent;
+    --pokedex-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom progress bar indicator color */
+.progress-indicator {
+  background-color: hsl(var(--primary));
+}
+
+/* Custom animation for cry button */
+@keyframes pulse-once {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--pokedex-accent), 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(var(--pokedex-accent), 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--pokedex-accent), 0);
+  }
+}
+
+.animate-pulse-once {
+  animation: pulse-once 0.6s ease-out forwards;
+}
